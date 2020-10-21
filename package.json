@@ -1,0 +1,22 @@
+{
+    "name": "learn-koa2",
+    "version": "1.0.0",
+    "description": "learn Koa 2",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "keywords": [
+        "koa",
+        "async"
+    ],
+    "author": "david pan",
+    "dependencies": {
+        "fs": "0.0.1-security",
+        "koa": "^2.13.0",
+        "koa-body": "^4.2.0",
+        "koa-router": "^9.0.1",
+        "koa-static": "^5.0.0",
+        "koa-views": "^6.3.0"
+    }
+}
