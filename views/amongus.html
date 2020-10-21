@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amongus</title>
+    <script src="./res/vue.min.js"></script>
+    <link href="./res/css/mzui.min.css" rel="stylesheet">
+    <style>
+        .us-title{
+            text-align:center ;
+            padding:.4rem
+        }
+        .us-session-ctn{
+            display: flex;
+        }
+        .us-session{
+            height:8rem;
+            flex:1;
+            text-align: center;
+            line-height: 8rem;
+            font-size: 20px;
+        }
+        .us-detail{
+            position: fixed;
+            bottom:0px;
+            height:30em;
+            width:100%;
+        }
+        .us-tip{
+            overflow: scroll;
+        }
+        .us-tip p{
+            display: flex;
+        }
+        .us-tip span{
+            width:10em;
+            padding:0 1em;
+        }
+        .us-tip span:first-child{
+            width:5em;
+            text-align: right;
+        }
+        .us-logo{
+            margin-top:5em;
+            text-align: center;
+        }
+        .bigimg{
+            position: fixed;
+            top:0px;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            background-color: white;
+            display: flex;
+            justify-content:center;
+            align-items:Center;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+<div id="vmcontent" class="tiles">
+    <div class="us-title-ctn">
+        <div class="us-title primary">{{title}}
+        </div>
+    </div>
+    <div class="us-session-ctn">
+        <div class="us-session red" v-on:click="change(1)">{{session1}}</div>
+        <div class="us-session yellow" v-on:click="change(2)">{{session2}}</div>
+    </div>
+    <div class="us-session-ctn">
+        <div class="us-session green" v-on:click="change(3)">{{session3}}</div>
+        <div class="us-session purple" v-on:click="change(4)">{{session4}}</div>
+    </div>
+    <div class="us-detail">
+        <div class="us-map" v-show="map">
+            <img :src="mapurl" v-on:click="openimg()">
+        </div>
+        <div class="us-tip" v-show="tip">
+            <p v-for="item in entocn">
+                <span>{{item.en}}</span>:<span>{{item.cn}}</span>
+            </p>
+        </div>
+        <div class="us-logo" v-show="(!tip)&(!map)">
+            <img src="./res/img/amongus.png">
+        </div>
+    </div>
+    <div class="bigimg" v-show="bigimgshow">
+        <img :src="mapurl" v-on:click="close()">
+    </div>
+</div>
+    <script>
+        var vm = new Vue({
+            el:'#vmcontent',
+            data:{
+                title:"amongus",
+                session1:"地图1",
+                session2:"地图2",
+                session3:"地图3",
+                session4:"常用语",
+                tip:false,
+                map:false,
+                mapurl:"",
+                bigimgshow:false,
+                entocn:[
+                    {en:"idk",cn:"我不知道"},
+                    {en:"sus",cn:"怀疑"},
+                ]
+            }, 
+            // 在 `methods` 对象中定义方法
+            methods: {
+                change: function (type) {
+                    switch(type){
+                        case 1:
+                            this.map=true;
+                            this.mapurl="./res/img/map1.jpg"
+                            this.tip=false;
+                            break;
+                        case 2:
+                            this.map=true;
+                            this.mapurl="./res/img/map2.jpg"
+                            this.tip=false;
+                            break;
+                        case 3:
+                            this.map=true;
+                            this.mapurl="./res/img/map3.jpg"
+                            this.tip=false;
+                            break;
+                        case 4:
+                            this.tip=true;
+                            this.map=false;
+                            this.mapurl=""
+                            break;
+                        default:
+                            this.tip=false;
+                            this.map=false;
+                            this.mapurl=""
+                            break;
+
+                    }
+                },
+                openimg:function(){
+                    this.bigimgshow=true;
+                },
+                close:function(){
+                    this.bigimgshow=false;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -22,8 +22,8 @@ app.listen(3000);
  
 console.log('app started at port 3000...');
 //设置路由
-router.get('/task1', async(ctx, next) => {
-    await ctx.render("task01/index",{
+router.get('/us', async(ctx, next) => {
+    await ctx.render("amongus",{
         title:"nodeWeb 首页"
     })
 });
